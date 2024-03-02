@@ -3146,7 +3146,7 @@
 		},
 		{
 			"sampler":0,
-			"source":1
+			"source":3
 		},
 		{
 			"sampler":0,
@@ -3158,7 +3158,7 @@
 		},
 		{
 			"sampler":0,
-			"source":1
+			"source":4
 		},
 		{
 			"sampler":0,
@@ -3170,7 +3170,7 @@
 		},
 		{
 			"sampler":0,
-			"source":1
+			"source":5
 		},
 		{
 			"sampler":0,
@@ -3182,7 +3182,7 @@
 		},
 		{
 			"sampler":0,
-			"source":1
+			"source":6
 		},
 		{
 			"sampler":0,
@@ -3194,7 +3194,7 @@
 		},
 		{
 			"sampler":0,
-			"source":1
+			"source":7
 		},
 		{
 			"sampler":0,
@@ -3208,14 +3208,39 @@
 			"uri":"Wood_002_NORM.jpg"
 		},
 		{
-			"mimeType":"image/jpeg",
-			"name":"Wood_002_COLOR",
-			"uri":"Wood_002_COLOR.jpg"
+			"mimeType":"image/png",
+			"name":"Tiles_neatral",
+			"uri":"Tiles_neatral.png"
 		},
 		{
 			"mimeType":"image/png",
 			"name":"Wood_002_ROUGH",
 			"uri":"Wood_002_ROUGH.png"
+		},
+		{
+			"mimeType":"image/png",
+			"name":"Wood_BG",
+			"uri":"Wood_BG.png"
+		},
+		{
+			"mimeType":"image/png",
+			"name":"Tiles_blue",
+			"uri":"Tiles_blue.png"
+		},
+		{
+			"mimeType":"image/png",
+			"name":"Tile_green",
+			"uri":"Tile_green.png"
+		},
+		{
+			"mimeType":"image/png",
+			"name":"Tiles_yellow",
+			"uri":"Tiles_yellow.png"
+		},
+		{
+			"mimeType":"image/png",
+			"name":"Tiles_red",
+			"uri":"Tiles_red.png"
 		}
 	],
 	"accessors":[

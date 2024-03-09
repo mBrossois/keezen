@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useAnimations, useGLTF } from '@tresjs/cientos';
+import { useGameStore } from '../store';
+
+const gameStore = useGameStore() 
 
 const { scene, nodes, animations, materials } = await useGLTF(
-  '/Board/keezen-board.gltf'
+  '/Board/keezen.gltf'
 );
 
 //const { actions } = useAnimations(animations, model);
@@ -11,23 +14,54 @@ const { scene, nodes, animations, materials } = await useGLTF(
 //const currentAction = ref(actions.Greeting);
 
 //currentAction.value.play();
-console.log(nodes);
 const nodeKeys = Object.keys(nodes);
-const cylindersKeys = nodeKeys.filter((value) => value.includes('Cylinder'));
+const cylindersKeys = nodeKeys.filter((value) => value.includes('Cylinder')).sort();
 
-const cylinders = cylindersKeys.map((cy) => {
-  return { name: cy, values: nodes[cy] };
-});
+function cylinderList(types: string) {
+  return cylindersKeys
+            .filter(val => val.includes(types))
+            .map(value => {
+              return { name: value, position: nodes[value].position }
+            })
+}
 
-console.log('cy', cylinders);
-const position = cylinders[0].values.position;
-console.log('pos', position);
+const cylBlue = {
+  graveyard: cylinderList('blue_graveyard'),
+  finish: cylinderList('blue_finish'),
+  field: cylinderList('blue_field')
+}
+
+const cylRed = {
+  graveyard: cylinderList('red_graveyard'),
+  finish: cylinderList('red_finish'),
+  field: cylinderList('red_field')
+}
+
+const cylGreen = {
+  graveyard: cylinderList('green_graveyard'),
+  finish: cylinderList('green_finish'),
+  field: cylinderList('green_field')
+}
+
+const cylYellow = {
+  graveyard: cylinderList('yellow_graveyard'),
+  finish: cylinderList('yellow_finish'),
+  field: cylinderList('yellow_field')
+}
+
+gameStore.setBoard({
+  red: cylRed,
+  green: cylGreen,
+  blue: cylBlue,
+  yellow: cylYellow,
+})
+
 </script>
 
 <template>
   <primitive :object="scene" />
-  <TresMesh :position="[position.x, position.y, position.z]" :scale="0.3">
+  <TresMesh :position="cylBlue.field[5].position" :scale="0.28">
     <TresCylinderGeometry />
-    <TresMeshToonMaterial color="#FBB03B" />
+    <TresMeshStandardMaterial color="#FBB03B" :opacity="0.75" transparent  />
   </TresMesh>
 </template>
